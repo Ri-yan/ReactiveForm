@@ -124,6 +124,7 @@ export class RegistrationComponent implements OnInit {
       localStorage.setItem("regiteredUsers",JSON.stringify(this.registeredUserData))
       setTimeout(()=>{
         this.isLoading=false;
+        this.registrationForm.reset()
       },3000)
     }
     closeError(value:any){

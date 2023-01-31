@@ -5,18 +5,30 @@
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">DOB</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Country</th>
-                    <th scope="col">State</th>
-                    <th scope="col">City</th>
-                    <th scope="col">Qualification</th>
+                    <th scope="col">
+                     <input type="text" name="" id="">Name</th>
+                    <th scope="col">
+                      <input type="text" name="" id="">DOB</th>
+                    <th scope="col">
+                      <input type="text" name="" id="">Email</th>
+                    <th scope="col">
+                      <input type="text" name="" id="">Phone</th>
+                    <th scope="col">
+                      <input type="text" name="" id="">Country</th>
+                    <th scope="col">
+                      <input type="text" name="" id="">State</th>
+                    <th scope="col">
+                      <input type="text" name="" id="">City</th>
+                      <th scope="col">
+                        <input type="text" name="" id="">Address</th>
+                        <th>
+                          <input type="text" name="" id="">Skills</th>
+                    <th scope="col">
+                      <input type="text" name="" id="">Qualification</th>
                     <th scope="col">Pincode</th>
                     <th scope="col">Gender</th>
                     <th scope="col">Status</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
@@ -26,14 +38,20 @@
                     <td scope="col">{{user.dob}}</td>
                     <td scope="col">{{user.email}}</td>
                     <td scope="col">{{user.phone}}</td>
-                    <td scope="col">{{user.address}}</td>
                     <td scope="col">{{user.location.country}}</td>
                     <td scope="col">{{user.location.state}}</td>
                     <td scope="col">{{user.location.city}}</td>
+                    <td scope="col">{{user.address}}</td>
+                    <td scope="col">
+                      <ul>
+                        <li *ngFor="let skill of user.skills">{{skill.itemName}}</li>
+                      </ul>                    
+                    </td>
                     <td scope="col">{{user.qualification}}</td>
                     <td scope="col">{{user.pincode}}</td>
                     <td scope="col">{{user.gender}}</td>
                     <td scope="col">{{user.martialStatus}}</td>
+                    
                   </tr>
                 </tbody>
               </table>
