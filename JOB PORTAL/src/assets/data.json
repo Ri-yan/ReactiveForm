@@ -1,0 +1,18 @@
+{
+    "genders":[ "male","female","others"],
+    "techSkills":["Java","C#","Web Dev","Machine Learning","Data Science"],
+    "martialStatus":["single","married","divorced"],
+    "qualifications":["doctorate","post graduate","under graduate","intermediate","highschool"],
+    "skills":[
+        {"id":1,"itemName":"Java"},
+        {"id":2,"itemName":"C#"},
+        {"id":3,"itemName":"Html"},
+        {"id":4,"itemName":"React"},
+        {"id":5,"itemName":"Angular"},
+        {"id":6,"itemName":"Bootstrap"},
+        {"id":7,"itemName":"SQL"},
+        {"id":8,"itemName":"PostgresSQL"},
+        {"id":9,"itemName":".Net Core"},
+        {"id":10,"itemName":"Firebase"}
+      ]
+}

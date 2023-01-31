@@ -1,0 +1,39 @@
+.register{
+    background: #ffffffe3;
+    box-shadow: 0 0 9px 0px;
+    border-radius: 5px;
+    padding: 10px 15px;
+    width: fit-content;
+    display: flex;
+    
+    margin: auto;
+    justify-content: center;
+}
+input.ng-invalid.ng-touched{
+    border:1px solid red;
+}
+.cover{
+    position: absolute;
+    left: 0px;
+    height: 25px;
+    width: 90px;
+}
+.check{
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 0 4px 1px #000000c7;
+}
+.selected-list .c-btn {
+    background: white !important;
+    color: black !important;
+}
+.selected-list .c-list .c-token {
+    background: #a2a2fd;
+    color: white;
+}
+.help-block{
+    color: red !important;
+}
+.fs-6{
+    font-size: small !important;
+}

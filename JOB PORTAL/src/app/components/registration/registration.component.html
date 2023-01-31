@@ -1,0 +1,278 @@
+<div class="container margin-auto">
+    <div class="row d-flex flex-column pt-5">
+        <h3 class="text-center">Candidate Registration</h3>
+        <div class="col-10 register">
+            <form [formGroup]="registrationForm" (ngSubmit)="onRegister()">
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label>Name<span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <input type="text" formControlName="name" class="form-control" placeholder="Enter Name" required/>
+                        </div>
+                        <div class="help-block justify-content-between" 
+                        *ngIf="!registrationForm.get('name')?.value && registrationForm.get('name')?.touched"><p class="fs-6">Required*</p></div>
+                        <div class="help-block justify-content-between" 
+                        *ngIf="!registrationForm.get('name')?.valid && registrationForm.get('name')?.touched && registrationForm.get('name')?.value"><p class="fs-6">Invalid Name</p></div>
+                    </div>
+                    <div class="col-6">
+                        <label>Dob<span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <i class="fa-solid fa-calendar"></i>
+                            </div>
+                            <input type="date" formControlName="dob" class="form-control" placeholder="Enter Dob" max="{{maxDate}}" />
+                        </div>
+                        <div class="help-block justify-content-between" 
+                        *ngIf="(!registrationForm.get('dob')?.value)&& registrationForm.get('dob')?.touched"><p class="fs-6">Required*</p></div>
+                        <div class="help-block justify-content-between" 
+                        *ngIf="!registrationForm.get('dob')?.valid && registrationForm.get('dob')?.dirty"><p class="fs-6">age must be greater than 18</p></div>
+                    </div>
+                </div>
+
+
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label>Email<span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <input type="email" formControlName="email" class="form-control"
+                                placeholder="Enter Email" />
+                        </div>
+                        <div class="help-block justify-content-between" 
+                        *ngIf="!registrationForm.get('email')?.value && registrationForm.get('email')?.touched"><p class="fs-6">Required*</p></div>
+                        <div class="help-block justify-content-between" 
+                        *ngIf="!registrationForm.get('email')?.valid && registrationForm.get('email')?.touched && registrationForm.get('email')?.value"><p class="fs-6">Invalid Email</p></div>
+                    </div>
+                    <div class="col-6">
+                        <label>Phone<span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <i class="fa-solid fa-mobile-screen-button"></i>
+                            </div>
+                            <input type="tel" formControlName="phone" class="form-control" placeholder="Enter Phone"
+                                maxlength="10" />
+                        </div>
+                        <div class="help-block justify-content-between" 
+                        *ngIf="!registrationForm.get('phone')?.value && registrationForm.get('phone')?.touched"><p class="fs-6">Required*</p></div>
+                        <div class="help-block justify-content-between" 
+                        *ngIf="!registrationForm.get('phone')?.valid && registrationForm.get('phone')?.touched && registrationForm.get('phone')?.value"><p class="fs-6">Invalid Phone</p></div>
+                    </div>
+                </div>
+
+
+                <div class="row mb-2">
+                    <div class="col-12">
+                        <label><i class="fa-solid fa-location-dot me-1"></i>Address</label>
+                        <div class="input-group">
+                            <textarea class="form-control col-12" formControlName="address"
+                                placeholder="Enter Address here" id="address"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row mb-2" formGroupName="location">
+                    <div class="col-4">
+                        <label>Country<span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <i class="fa-solid fa-earth-americas"></i>
+                            </div>
+                            <select class="form-select" formControlName="country" (change)="getState()" aria-label="Default select example">
+                                <option selected value=null>Open this select menu</option>
+                                <option *ngFor="let country of countryList" value={{country.country_name}}>{{country.country_name}}</option>
+                            </select>
+                        </div>
+                        <div class="help-block justify-content-between" 
+                        *ngIf="!registrationForm.get('location.country')?.valid && registrationForm.get('location.country')?.touched"><p class="fs-6">Required*</p></div>
+                    </div>
+
+
+                    <div class="col-4">
+                        <label>State<span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <i class="fa-sharp fa-solid fa-chart-area"></i>
+                            </div>
+                            <select class="form-select" formControlName="state" (change)="getCity()"  aria-label="Default select example">
+                                <option selected value=null>Open this select menu</option>
+                                <option *ngFor="let state of stateList" value={{state.state_name}}>{{state.state_name}}</option>
+                            </select>
+                        </div>
+                        <div class="help-block justify-content-between" 
+                        *ngIf="!registrationForm.get('location.state')?.valid && registrationForm.get('location.state')?.touched"><p class="fs-6">Required*</p></div>
+                    </div>
+
+
+                    <div class="col-4">
+                        <label>City<span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <i class="fa-solid fa-city"></i>
+                            </div>
+                            <select class="form-select"  formControlName="city" aria-label="Default select example">
+                                <option selected value=null>Open this select menu</option>
+                                <option *ngFor="let city of cityList" value={{city.city_name}}>{{city.city_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row mb-2">
+                    <div class="col-4">
+                        <label>Qualification<span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <i class="fa-solid fa-school"></i>
+                            </div>
+                            <select class="form-select" formControlName="qualification"
+                                aria-label="Default select example">
+                                <option selected value=null>Open this select menu</option>
+                                <option value={{qualification}} *ngFor="let qualification of formData.qualifications">
+                                    {{qualification}}</option>
+                            </select>
+                        </div>
+                        <div class="help-block justify-content-between" 
+                        *ngIf="!registrationForm.get('qualification')?.value && registrationForm.get('qualification')?.touched"><p class="fs-6">Required*</p></div>
+                    </div>
+
+
+                    <div class="col-4">
+                        <label>Pincode<span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <i class="fa-solid fa-globe"></i>
+                            </div>
+                            <input type="text" formControlName="pincode" class="form-control"
+                                placeholder="Enter Pincode" maxlength="6" />
+                        </div>
+                        <div class="help-block justify-content-between" 
+                        *ngIf="!registrationForm.get('pincode')?.value && registrationForm.get('pincode')?.touched"><p class="fs-6">Required*</p></div>
+                        <div class="help-block justify-content-between" 
+                        *ngIf="!registrationForm.get('pincode')?.valid && registrationForm.get('pincode')?.touched && registrationForm.get('pincode')?.value"><p class="fs-6">Invalid pincode</p></div>
+                    </div>
+
+
+                    <div class="col-4">
+                        <label>Gender<span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <i class="fa-solid fa-person-half-dress"></i>
+                            </div>
+                            <select class="form-select" formControlName="gender" aria-label="Default select example">
+                                <option selected value=null>Open this select menu</option>
+                                <option value={{gender}} *ngFor="let gender of formData.genders">{{gender}}</option>
+                            </select>
+                        </div>
+                        <div class="help-block justify-content-between" 
+                        *ngIf="!registrationForm.get('gender')?.value && registrationForm.get('gender')?.touched"><p class="fs-6">Required*</p></div>
+                    </div>
+                </div>
+
+
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <label><i class="fa-solid fa-microchip me-1"></i>Technical Skills<span
+                                class="text-danger">*</span></label>
+                        <div class="input-group justify-content-around">
+                            <!-- <div class="form-check" *ngFor="let skill of formData.techSkills" formArrayName="skills">
+                                <input class="form-check-input" type="checkbox" (click)="addSkill($event)" value={{skill}}>
+                                <label class="form-check-label" for="skill">
+                                    {{skill}}
+                                </label>
+                            </div>
+                         -->
+                        </div>
+                        <angular2-multiselect formControlName="skills" 
+                            [data]="formData.skills" [settings]="dropdownSettings">
+                        </angular2-multiselect>
+                        <!-- <angular2-multiselect formControlName="skill" [data]="formData.skills" 
+                                      [settings]="dropdownSettings" 
+                                      (onSelect)="onItemSelect($event)"
+                                      (onDeSelect)="OnItemDeSelect($event)" 
+                                      (onSelectAll)="onSelectAll($event)" 
+                                      (onDeSelectAll)="onDeSelectAll($event)"
+                                      >
+                        </angular2-multiselect> -->
+                <div class="help-block justify-content-between" 
+                        *ngIf="!registrationForm.get('skills')?.valid && registrationForm.get('skills')?.touched"><p class="fs-6">Required*</p></div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-5" >
+                        <label>Confirmation<span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <div class="form-check" data-bs-toggle="modal" data-bs-target="#agreeModal" >
+                                <!-- <input class="form-check-input" id="agree" formControlName="agree" type="checkbox"
+                                     [value]="agree"> -->
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    *I Agree <i [ngStyle]="registrationForm.get('agree')?.value?{'background-color': 'green'} : {'background-color': 'red'}" class="fa-regular fa-circle-check check"></i>.
+                                </label>
+                                <span class="cover" (click)="openModal()"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="row justify-content-center">
+                            <label class="form-check-label text-center" for="flexCheckDefault">
+                                   <i class="fa-solid fa-ring"></i> Marital status .
+                            </label>
+                            <!-- <div class="col-4" *ngFor="let status of martialStatus">
+                                <div class="radio">
+                                    <label>
+                                        <input name="gender" type="radio" formControlName="martialStatus" name="martialStatus" />
+                                        {{status}}
+                                    </label>
+                                    
+                                </div>
+                            </div> -->
+                            <div class="col-6" >
+                                <div class="radio d-flex justify-content-around flex-wrap" style="width: 100%;">
+                                <label for="" class="me-1" *ngFor="let status of formData.martialStatus" ><input  type="radio" value={{status}} name="martialStatus" formControlName="martialStatus" >{{status}}</label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="spinner-border float-start ms-3 mt-4 mb-2" *ngIf="isLoading" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                <button *ngIf="!isLoading" [disabled]="!registrationForm.valid" type="submit" class="float-left px-4 mt-4 mb-2 btn btn-primary">Register</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="agreeModal" tabindex="-1" aria-labelledby="agreeModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="agreeModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <span class="text-danger">*</span><input class="form-check-input" id="agree" formControlName="agree" type="checkbox"
+                                     [value]="agree">
+                                Do you agree that the information provided is correct and verified from respective
+                                institutions.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" (click)="closeModal()" data-bs-dismiss="modal">No</button>
+                                <button type="button" class="btn btn-primary" (click)="agree()">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>

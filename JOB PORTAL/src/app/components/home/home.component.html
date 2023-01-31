@@ -1,0 +1,60 @@
+<div class="container mt-5">
+    <div class="row list ">
+        <h1>Registerd Users</h1>
+        <div class="col-12 mt-5">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">DOB</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">State</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Qualification</th>
+                    <th scope="col">Pincode</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    
+                  <tr *ngFor="let user of usersData">
+                    <td scope="col">{{user.name}}</td>
+                    <td scope="col">{{user.dob}}</td>
+                    <td scope="col">{{user.email}}</td>
+                    <td scope="col">{{user.phone}}</td>
+                    <td scope="col">{{user.address}}</td>
+                    <td scope="col">{{user.location.country}}</td>
+                    <td scope="col">{{user.location.state}}</td>
+                    <td scope="col">{{user.location.city}}</td>
+                    <td scope="col">{{user.qualification}}</td>
+                    <td scope="col">{{user.pincode}}</td>
+                    <td scope="col">{{user.gender}}</td>
+                    <td scope="col">{{user.martialStatus}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+<!-- <div class="row">
+    <div class="col">
+        <form [formGroup]="userForm" novalidate style="border: 1px solid #ccc; padding: 10px;">
+            <div class="form-group">
+                <label for="name">Technical Skills</label>
+               <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems" 
+                                      [settings]="dropdownSettings" 
+                                      (onSelect)="onItemSelect($event)"
+                                      (onDeSelect)="OnItemDeSelect($event)" 
+                                      (onSelectAll)="onSelectAll($event)" 
+                                      (onDeSelectAll)="onDeSelectAll($event)" formControlName="skills">
+                </angular2-multiselect>
+            </div>
+    </form>
+    </div>
+</div> -->
+
+</div>
