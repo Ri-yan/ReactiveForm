@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class CountrystatecityService {
   constructor(private http: HttpClient) { }
-  auth_token: string = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJsaW5vZ2V2ZWQuamVsZXZlbnVAcnVuZ2VsLm5ldCIsImFwaV90b2tlbiI6ImtvdF9FQjFhZWpNSkpsbkxvZ0RHMl9aWDZ4SDNLN0JlWjhnZlZKb1RJaVdmcHdIbFlpakRWSVdBQTZ0a3QxRXpBTFkifSwiZXhwIjoxNjc1MjQ5NTM2fQ.fl2Ax97f8tnbDMgXmiAeHKkgesqzJpnb00GYS3IinB8"
+  auth_token: string = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJ0YWRhZGkzNjQ4QGJ5bWVyY3kuY29tIiwiYXBpX3Rva2VuIjoic25fOHRjTzFPQlB3WG1sZFZZU0NhYXdmYjNNcEwtUUt4aEhicjAteVBwWHJrMGpzVjRyc2VqY2lCekRDYkxlZEE3MCJ9LCJleHAiOjE2NzUzMzE5NDN9.dK6mVi8KRlbu5vrzoDxC0mipihB0pUxOBXiedTFdZWU"
   base_Url: string = "https://www.universal-tutorial.com/api/"
   getCountry() {
     let headers = new HttpHeaders;

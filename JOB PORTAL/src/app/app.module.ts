@@ -11,6 +11,8 @@ import { RegistrationService } from './services/registration.service';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { HomeComponent } from './components/home/home.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { CountrystatecityComponent } from './components/registration/countrystatecity/countrystatecity.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +20,8 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
     RegistrationComponent,
     NavigationComponent,
     HomeComponent,
+    SearchFilterPipe,
+    CountrystatecityComponent
   ],
   imports: [
     BrowserModule,

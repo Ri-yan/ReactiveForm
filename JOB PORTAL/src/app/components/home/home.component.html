@@ -1,17 +1,17 @@
 <div class="container mt-5">
   <h3 class="text-center">Registerd Users</h3>
     <div class="row list ">
-        <div class="col-12 mt-3">
-            <table class="table table-hover table-responsive-lg">
+        <div class="col-10 mt-3">
+            <table class="table table-hover table-responsive-lg table-bordered">
                 <thead>
                   <tr>
                     <th scope="col">S.no</th>
                     <th scope="col">
-                     <input type="text" name="" id="">Name</th>
+                     <input type="text" class="search—field" placeholder="Search by Name" name="" id="" [(ngModel)]="searchByName" >Name</th>
                     <th scope="col">
                       <input type="text" name="" id="">DOB</th>
                     <th scope="col">
-                      <input type="text" name="" id="">Email</th>
+                      <input type="text" name="" id="" [(ngModel)]="searchByEmail" >Email</th>
                     <th scope="col">
                       <input type="text" name="" id="">Phone</th>
                     <th scope="col">
@@ -33,9 +33,9 @@
                 </thead>
                 <tbody>
                     
-                  <tr *ngFor="let user of usersData;let i = index">
+                  <tr *ngFor="let user of usersData | searchFilter:searchByName;let i = index ">
                     <td scope="col">{{i+1}}</td>
-                    <td scope="col">{{user.name}}</td>
+                    <td scope="col"><a (click)="navigateWithState(user.id)">{{user.name}}</a></td>
                     <td scope="col">{{user.dob}}</td>
                     <td scope="col">{{user.email}}</td>
                     <td scope="col">{{user.phone}}</td>

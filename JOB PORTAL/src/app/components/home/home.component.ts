@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { HomeService } from 'src/app/services/home.service';
 
 @Component({
   selector: 'app-home',
@@ -7,61 +9,26 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
+  searchByName!:string;
+  searchByEmail!:string;
+
   usersData:any=[];
-
-  // dropdownList:any=[];
-  // selectedItems:any;
-  // dropdownSettings={}
-  // userForm!: FormGroup;
-
-  ngOnInit(){
-    // this.userForm = new FormGroup({
-    //   skills: new FormControl(null,Validators.required)
-    // });
-    
-    let data:any = localStorage.getItem('regiteredUsers');
-    this.usersData=JSON.parse(data)
-    console.log(this.usersData)
-
-
-
-//     this.dropdownList = [
-//       {"id":1,"itemName":"Java"},
-//       {"id":2,"itemName":"C#"},
-//       {"id":3,"itemName":"Html"},
-//       {"id":4,"itemName":"React"},
-//       {"id":5,"itemName":"Angular"},
-//       {"id":6,"itemName":"Bootstrap"},
-//       {"id":7,"itemName":"SQL"},
-//       {"id":8,"itemName":"PostgresSQL"},
-//       {"id":9,"itemName":".Net Core"},
-//       {"id":10,"itemName":"Firebase"}
-//     ];
-// this.selectedItems = [
-//   {"id":2,"itemName":"C#"},
-//   {"id":3,"itemName":"Html"},
-//     ];
-// this.dropdownSettings = { 
-//           singleSelection: false, 
-//           text:"Select Skills",
-//           selectAllText:'Select All',
-//           unSelectAllText:'UnSelect All',
-//           enableSearchFilter: true,
-//           classes:"myclass custom-class"
-//         };         
+  constructor(private homeservice:HomeService,private router :Router){}
+  getUserData(){
+    this.usersData=this.homeservice.getUserData()
+    console.log("Data",this.usersData)
   }
-//   onItemSelect(item:any){
-//     console.log(item);
-//     console.log(this.selectedItems);
-// }
-// OnItemDeSelect(item:any){
-//     console.log(item);
-//     console.log(this.selectedItems);
-// }
-// onSelectAll(items: any){
-//     console.log(items);
-// }
-// onDeSelectAll(items: any){
-//     console.log(items);
-// }
+  findUserById(_id:string){
+    return this.usersData.find((obj: { id: string; })=>obj.id==_id)
+  }
+  navigateWithState(path:string) {
+    this.router.navigate(["/update","user",path],{state:this.findUserById(path)});
+  }
+  ngOnInit(){
+    this.getUserData()
+    // let data:any = localStorage.getItem('regiteredUsers');
+    // this.usersData=JSON.parse(data)
+    // console.log(this.usersData)
+  }
+
 }

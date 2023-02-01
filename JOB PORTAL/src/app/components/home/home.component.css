@@ -2,6 +2,9 @@
     overflow-x: scroll;
     background: white;
     border-radius: 15px;
+    width: 80%;
+    margin: auto;
+    height: 90vh;
 }
 
 .list::-webkit-scrollbar {
@@ -17,4 +20,26 @@
     width: 2px;
     background-color: rgb(148, 232, 198);    /* color of the scroll thumb */
     border-radius: 15px;      
+  }
+  ul{
+    overflow-y: scroll;
+    height: 7em;
+  }
+  ul::-webkit-scrollbar {
+    width: 2px;     
+    scroll-behavior: smooth;          /* width of the entire scrollbar */
+  }
+  
+  ul::-webkit-scrollbar-track {
+    background: rgba(106, 116, 110, 0.186);        /* color of the tracking area */
+  }
+  
+  ul::-webkit-scrollbar-thumb {
+    width: 2px;
+    background-color: rgb(148, 232, 198);    /* color of the scroll thumb */
+    border-radius: 15px;      
+  }
+  a{
+    color: blue !important;
+    text-decoration-line: underline !important;
   }
