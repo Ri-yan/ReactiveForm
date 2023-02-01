@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit{
   constructor(private homeservice:HomeService,private router :Router){}
   getUserData(){
     this.usersData=this.homeservice.getUserData()
-    console.log("Data",this.usersData)
+    console.log("All Register Candidates",this.usersData)
   }
   findUserById(_id:string){
     return this.usersData.find((obj: { id: string; })=>obj.id==_id)

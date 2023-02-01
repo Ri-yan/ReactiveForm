@@ -101,64 +101,9 @@
                     </div>
                 </div>
 
-                <!-- COUNTRY STATE CITY COMPONENT -->
-                <!-- <div class="row mb-2" formGroupName="location">
-                    <div class="col-4">
-                        <label>Country<span class="text-danger">*</span></label>
-                        <div class="input-group">
-                            <div class="input-group-text">
-                                <i class="fa-solid fa-earth-americas"></i>
-                            </div>
-                            <select class="form-select" formControlName="country" (change)="getState()"
-                                aria-label="Default select example">
-                                <option selected value=null>Open this select menu</option>
-                                <option *ngFor="let country of countryList" value={{country.country_name}}>
-                                    {{country.country_name}}</option>
-                            </select>
-                        </div>
-                        <div class="help-block justify-content-between"
-                            *ngIf="!registrationForm.get('location.country')?.valid && registrationForm.get('location.country')?.touched">
-                            <p class="fs-6">Required*</p>
-                        </div>
-                    </div>
-
-                    <div class="col-4">
-                        <label>State<span class="text-danger">*</span></label>
-                        <div class="input-group">
-                            <div class="input-group-text">
-                                <i class="fa-sharp fa-solid fa-chart-area"></i>
-                            </div>
-                            <select class="form-select" formControlName="state" (change)="getCity()"
-                                aria-label="Default select example">
-                                <option selected value=null>Open this select menu</option>
-                                <option *ngFor="let state of stateList" value={{state.state_name}}>{{state.state_name}}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="help-block justify-content-between"
-                            *ngIf="!registrationForm.get('location.state')?.valid && registrationForm.get('location.state')?.touched">
-                            <p class="fs-6">Required*</p>
-                        </div>
-                    </div>
-
-                    <div class="col-4">
-                        <label>City<span class="text-danger">*</span></label>
-                        <div class="input-group">
-                            <div class="input-group-text">
-                                <i class="fa-solid fa-city"></i>
-                            </div>
-                            <select class="form-select" formControlName="city" aria-label="Default select example">
-                                <option selected value=null>Open this select menu</option>
-                                <option *ngFor="let city of cityList" value={{city.city_name}}>{{city.city_name}}
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- COUNTRY STATE CITY COMPONENT -->
+                <!---------------------------------COUNTRY STATE CITY COMPONENT --------------------------------------->
                 <app-countrystatecity formGroupName="location"></app-countrystatecity>
-                <!-- --------------------------------------------- -->
+                <!-- ----------------------------------------------------------------------------------------------- -->
                 
                 <!-- QUALIFICATION INPUT -->
                 <div class="row mb-2">
@@ -227,13 +172,13 @@
                                 class="text-danger">*</span></label>
                         <div class="input-group justify-content-around">
                         </div>
-                        <angular2-multiselect formControlName="skills" [data]="formData.skills"
+                        <angular2-multiselect formControlName="skills" [data]="formData.skills || []"
                             [settings]="dropdownSettings">
                         </angular2-multiselect>
-                        <!-- <div class="help-block justify-content-between"
+                        <div class="help-block justify-content-between"
                             *ngIf="!registrationForm.get('skills')?.valid && registrationForm.get('skills')?.touched">
                             <p class="fs-6">Required*</p>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
 
